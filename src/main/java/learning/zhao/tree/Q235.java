@@ -81,5 +81,29 @@ class Q235 {
             findPath(root.right, p, path);
         }
     }
+
+    public TreeNode lowestCommonAncestor1(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.val == p.val || root.val == q.val) {
+            return root;
+        }
+
+        if ((root.val > p.val && root.val < q.val) || (root.val < p.val && root.val > q.val)) {
+            return root;
+        }
+
+        if (root.val > p.val ) {
+            return lowestCommonAncestor(root.left, p, q);
+        }
+
+        if (root.val < p.val) {
+            return lowestCommonAncestor(root.right, p, q);
+        }
+
+        return null;
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
