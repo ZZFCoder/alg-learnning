@@ -42,25 +42,27 @@ import java.util.List;
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
  * }
  */
 
 class Q235 {
     List<TreeNode> pPath = new ArrayList<>();
     List<TreeNode> qPath = new ArrayList<>();
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         findPath(root, p, pPath);
         findPath(root, q, qPath);
         TreeNode ret = null;
-        for(int i = 0; i < pPath.size() && i < qPath.size(); i++) {
-            if(pPath.get(i) == qPath.get(i)) {
+        for (int i = 0; i < pPath.size() && i < qPath.size(); i++) {
+            if (pPath.get(i) == qPath.get(i)) {
                 ret = pPath.get(i);
             }
         }
@@ -70,14 +72,13 @@ class Q235 {
 
     void findPath(TreeNode root, TreeNode p, List<TreeNode> path) {
         path.add(root);
-        if(root.val == p.val) {
+        if (root.val == p.val) {
             return;
         }
 
-        if(root.val > p.val) {
+        if (root.val > p.val) {
             findPath(root.left, p, path);
-        }
-        else {
+        } else {
             findPath(root.right, p, path);
         }
     }
@@ -95,15 +96,11 @@ class Q235 {
             return root;
         }
 
-        if (root.val > p.val ) {
+        if (root.val > p.val) {
             return lowestCommonAncestor(root.left, p, q);
         }
 
-        if (root.val < p.val) {
-            return lowestCommonAncestor(root.right, p, q);
-        }
-
-        return null;
+        return lowestCommonAncestor(root.right, p, q);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
