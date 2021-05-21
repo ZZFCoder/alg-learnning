@@ -46,6 +46,27 @@ public class Q404 {
             return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right) + leftSum;
         }
     }
+
+    static class Solution1 {
+        int ret = 0;
+        public int sumOfLeftLeaves(TreeNode root) {
+            if (root == null) {
+                return ret;
+            }
+
+            if (root.left != null) {
+                if (root.left.left == null && root.left.right == null) {
+                    ret += root.left.val;
+                }
+                else {
+                    sumOfLeftLeaves(root.left);
+                }
+            }
+
+            sumOfLeftLeaves(root.right);
+            return ret;
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
