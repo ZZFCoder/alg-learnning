@@ -72,6 +72,28 @@ public class Q530 {
             tr(root.right);
         }
     }
+
+    static class Solution1 {
+        int pre = -1;
+        int ret = Integer.MAX_VALUE;
+        public int getMinimumDifference(TreeNode root) {
+            tr(root);
+            return ret;
+        }
+
+        void tr(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+
+            tr(root.left);
+            if (pre != -1) {
+                ret = Math.min(Math.abs(root.val - pre), ret);
+            }
+            pre = root.val;
+            tr(root.right);
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
