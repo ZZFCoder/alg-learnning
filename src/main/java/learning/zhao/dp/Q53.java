@@ -67,7 +67,7 @@ public class Q53 {
             int sum = 0;
             int ret = Integer.MIN_VALUE;
             for (int i : nums) {
-                sum = Math.max(sum + i, i);
+                sum = Math.max(sum + i, i); //记录加和
                 ret = Math.max(ret, sum);
             }
             return ret;
