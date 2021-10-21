@@ -1,7 +1,5 @@
 package learning.zhao.material;
 
-import lombok.Data;
-
 /**
  * @author zhaozhifeng10
  * @since 2021/2/7 17:36
@@ -10,6 +8,7 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
+    public TreeNode next;
     public TreeNode() {}
     public TreeNode(int val) { this.val = val; }
     public TreeNode(int val, TreeNode left, TreeNode right) {
