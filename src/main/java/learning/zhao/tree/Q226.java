@@ -65,7 +65,20 @@ public class Q226 {
             root.right = right;
             return root;
         }
+
+        public TreeNode invertTree2(TreeNode root) {
+            if (root == null) {
+                return null;
+            }
+
+            TreeNode right = invertTree(root.left);
+            TreeNode left = invertTree(root.right);
+            root.left = left;
+            root.right = right;
+            return root;
+        }
     }
+
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
