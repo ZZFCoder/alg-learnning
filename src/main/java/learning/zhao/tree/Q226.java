@@ -79,6 +79,30 @@ public class Q226 {
         }
     }
 
+    private static class Solution2 {
+        public TreeNode invertTree(TreeNode root) {
+            if(root == null) {
+                return null;
+            }
+
+            TreeNode newR = invertTree(root.left);
+            TreeNode newL = invertTree(root.right);
+            root.right = newR;
+            root.left = newL;
+            return root;
+        }
+        public TreeNode invertTreeWrong(TreeNode root) {
+            if(root == null) {
+                return null;
+            }
+
+            //root直接被改了....
+            root.right = invertTree(root.left);
+            root.left = invertTree(root.right);
+            return root;
+        }
+    }
+
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
