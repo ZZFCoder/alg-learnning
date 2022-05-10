@@ -21,4 +21,27 @@ public class Q19 {
             return head;
         }
     }
+
+    static class Solution2 {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode ahead = new ListNode();
+            ahead.next = head;
+            ListNode loop1 = ahead;
+            ListNode loop2 = ahead;
+            int i = 0;
+            while(loop1 != null) {
+                loop1 = loop1.next;
+                if (i > n) {
+                    loop2 = loop2.next;
+                }
+                i++;
+            }
+
+            if (loop2.next != null) {
+                loop2.next = loop2.next.next;
+            }
+
+            return ahead.next;
+        }
+    }
 }
