@@ -60,4 +60,31 @@ public class Q21 {
             return ret.next;
         }
     }
+
+    static class Solution3 {
+        public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+            ListNode ret = new ListNode();
+            ListNode loop = ret;
+            while (list1 != null && list2 != null) {
+                if (list1.val < list2.val) {
+                    loop.next = list1;
+                    list1 = list1.next;
+                }
+                else {
+                    loop.next = list2;
+                    list2 = list2.next;
+                }
+                loop = loop.next;
+            }
+
+            if (list1 != null) {
+                loop.next = list1;
+            }
+
+            if (list2 != null) {
+                loop.next = list2;
+            }
+            return ret.next;
+        }
+    }
 }
